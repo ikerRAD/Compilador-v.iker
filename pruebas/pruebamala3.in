@@ -1,0 +1,36 @@
+#Script con dos programas main
+
+def main ( ):
+
+let a,b, c : integer; d,e: float in {
+''' esto es un '
+ comentario multilinea '''
+
+	def main ( ):
+	let aux, vueltas: integer in {	
+		aux = y;
+	   	resul = x;
+	   	if resul < 1000: {
+			vueltas = 0;
+			while aux == 0: {
+				resul = resul + 1;
+				break if resul > 1000000;
+				aux = aux - 1;
+				vueltas = vueltas + 1;
+			   } else: {
+				if resul < 0: { continue; }			
+				println(vueltas);	
+			} #fin del while-else
+	    	}  #fin del if
+
+	 } # fin de sumar
+
+   
+   read(a); read(b);
+   d = 1/b;
+   e = 0.1e-1/a;
+   ''' sumar(a,b,c); esto solo para aquellos que 
+                   traten llamadas a procedimientos '''
+   c = c*(c*d)+e;
+   println(c*c);
+} # fin del main

@@ -40,7 +40,6 @@ float                                       TOKEN(RFLOAT);
 "}"                                         TOKEN(TCERRARLLAVE);
 "("                                         TOKEN(TABRIRPAREN);
 ")"                                         TOKEN(TCERRARPAREN);
-":="                                        TOKEN(TASSIG);
 "="                                         TOKEN(TEQ);
 ":"                                         TOKEN(TDOSPT);
 ";"                                         TOKEN(TSEMIC);
