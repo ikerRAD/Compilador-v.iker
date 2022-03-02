@@ -60,7 +60,7 @@ float                                       TOKEN(RFLOAT);
 ">="                                        TOKEN(CGE);
 "/="                                        TOKEN(CNE);
 
-[a-zA-Z](_?[a-zA-Z0-9]+)*                   TOKEN(TIDENTIFIER) ; 
+[a-zA-Z](_?[a-zA-Z0-9])*                    TOKEN(TIDENTIFIER) ; 
 [0-9]+\.[0-9]+([eE][\-\+]?[0-9]+)?          TOKEN(TDOUBLE);
 [0-9]+                                      TOKEN(TINTEGER); 
 
