@@ -17,7 +17,7 @@
 
 %%
 #[^\n#]*\n                                            ;
-'''('?'?[^'#])*'''                              ;
+'''('?'?[^'#])*'?'?'''                                ;
 program                                     TOKEN(RPROGRAM) ;
 comienzo                                    TOKEN(RBEGIN) ;
 fin                                         TOKEN(RENDPROGRAM) ;
