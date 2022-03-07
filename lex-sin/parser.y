@@ -53,10 +53,10 @@
 %type <str> expresion
 
 %start programa
+
 %left OSUM OREST
-%nonassoc CEQ CGT CGE CLT CLE CNE
 %left OMULT ODIV
-%right TASSIG
+%nonassoc CEQ CGT CGE CLT CLE CNE
 
 %%
 
