@@ -83,7 +83,7 @@ declaraciones : declaraciones TSEMIC lista_de_ident TDOSPT tipo
         | lista_de_ident TDOSPT tipo
 ;
 
-lista_de_ident : TIDENTIFIER resto_lista_id
+lista_de_ident : TIDENTIFIER resto_lista_id;
 
 resto_lista_id : /* empty */
 	| TCOMA TIDENTIFIER resto_lista_id
@@ -142,3 +142,4 @@ expresion : expresion CEQ expresion
         | TINTEGER
         | TDOUBLE
         | TABRIRPAREN expresion TCERRARPAREN
+;
