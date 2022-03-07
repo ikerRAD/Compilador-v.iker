@@ -54,9 +54,10 @@
 
 %start programa
 
+
+%nonassoc CEQ CGT CGE CLT CLE CNE
 %left OSUM OREST
 %left OMULT ODIV
-%nonassoc CEQ CGT CGE CLT CLE CNE
 
 %%
 
