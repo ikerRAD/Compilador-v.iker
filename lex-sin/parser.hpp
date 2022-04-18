@@ -87,8 +87,7 @@ extern int yydebug;
     CNE = 293,
     TIDENTIFIER = 294,
     TDOUBLE = 295,
-    TINTEGER = 296,
-    TASSIG = 297
+    TINTEGER = 296
   };
 #endif
 
@@ -96,11 +95,16 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 20 "parser.y"
+#line 32 "parser.y"
 
-    string *str ; 
+    string *str ;
+    vector<string> *list ;
+    expresionstruct *expr ;
+    sentenciastruct *sent ;
+    int number ;
+    vector<int> *numlist;
 
-#line 104 "parser.hpp"
+#line 108 "parser.hpp"
 
 };
 typedef union YYSTYPE YYSTYPE;

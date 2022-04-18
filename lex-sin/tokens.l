@@ -6,6 +6,7 @@
  #include <iostream>
  #include <vector>
  using namespace std ;
+ #include "Exp.hpp"
  #include "parser.hpp" 
  using namespace std;
 
