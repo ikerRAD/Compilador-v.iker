@@ -181,21 +181,21 @@ sentencia : variable TEQ expresion TSEMIC
         }
         | RWHILE M expresion TDOSPT M bloque M 
         {
-        // codigo.anadirInstruccion("goto");
-        // vector<int> tmp1 ; tmp1.push_back($7) ;
-    	// codigo.completarInstrucciones(tmp1, $2) ;
+        codigo.anadirInstruccion("goto");
+        vector<int> tmp1 ; tmp1.push_back($7) ;
+    	codigo.completarInstrucciones(tmp1, $2) ;
         }
         RELSE TDOSPT bloque M
         {
-        // $$ = new sentenciastruct;
-        // sentenciastruct tmp;
-        // *$$ = tmp;
-        // codigo.completarInstrucciones($3->trues,$5);
-        // codigo.completarInstrucciones($3->falses,$7 + 1);
-        // codigo.completarInstrucciones($6->exit,$7 + 1);
-        // codigo.completarInstrucciones($6->conti,$2);
-        // codigo.completarInstrucciones($11->exit,$12);
-        // codigo.completarInstrucciones($11->conti,$2);
+        $$ = new sentenciastruct;
+        sentenciastruct tmp;
+        *$$ = tmp;
+        codigo.completarInstrucciones($3->trues,$5);
+        codigo.completarInstrucciones($3->falses,$7 + 1);
+        codigo.completarInstrucciones($6->exit,$7 + 1);
+        codigo.completarInstrucciones($6->conti,$2);
+        codigo.completarInstrucciones($11->exit,$12);
+        codigo.completarInstrucciones($11->conti,$2);
         }
         | RFOREVER TDOSPT M bloque M
         {
@@ -220,9 +220,8 @@ sentencia : variable TEQ expresion TSEMIC
         {
         $$ = new sentenciastruct;
         sentenciastruct tmp;
-        *$$ = tmp;	
-        vector<int> tmp1 ; tmp1.push_back(codigo.obtenRef()) ;
-	$$->conti = tmp1;
+        tmp.conti.push_back(codigo.obtenRef()) ;
+	*$$ = tmp;
         codigo.anadirInstruccion("goto"); 
         }
         | RREAD TABRIRPAREN variable TCERRARPAREN TSEMIC
