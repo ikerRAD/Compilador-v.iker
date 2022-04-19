@@ -20,7 +20,6 @@
    expresionstruct makecomparison(std::string &s1, std::string &s2, std::string &s3) ;
    expresionstruct makearithmetic(std::string &s1, std::string &s2, std::string &s3) ;
    vector<int> *unir(vector<int> lis1, vector<int> lis2);
-   void copiar(vector<int> &lis1, vector<int> lis2);
    Codigo codigo;
 
 
@@ -156,8 +155,8 @@ resto_lis_de_param : /* empty */
 
 lista_de_sentencias : /* empty */ {$$ = new sentenciastruct;}
 	|sentencia lista_de_sentencias {$$ = new sentenciastruct;
-                                        copiar($$->exit,*unir($1->exit,$2->exit));
-                                        copiar($$->conti,*unir($1->conti,$2->conti));
+                                        $$->exit = *unir($1->exit,$2->exit);
+                                        $$->conti = *unir($1->conti,$2->conti);
                                         delete $1;
                                         delete $2;}
 ;
@@ -165,77 +164,67 @@ lista_de_sentencias : /* empty */ {$$ = new sentenciastruct;}
 sentencia : variable TEQ expresion TSEMIC
         {
         $$ = new sentenciastruct; 
-        sentenciastruct tmp;
-        *$$ = tmp;
         codigo.anadirInstruccion(*$1 + " := " + $3->str + ";"); 
+	delete $3;
         }
         | RIF expresion TDOSPT M bloque M
         {
         $$ = new sentenciastruct;
-        sentenciastruct tmp;
-        *$$ = tmp;
+	$$->exit = $5->exit;
+	$$->conti = $5->conti;
         codigo.completarInstrucciones($2->trues,$4);
         codigo.completarInstrucciones($2->falses,$6);
-        copiar($$->exit,$5->exit);
-        copiar($$->conti,$5->conti);
+	delete $2;
         }
         | RWHILE M expresion TDOSPT M bloque M 
         {
         codigo.anadirInstruccion("goto");
-        vector<int> tmp1 ; tmp1.push_back($7) ;
-    	codigo.completarInstrucciones(tmp1, $2) ;
+        vector<int> *tmp1 = new vector<int>; 
+	tmp1->push_back($7) ;
+    	codigo.completarInstrucciones(*tmp1, $2) ;
         }
         RELSE TDOSPT bloque M
         {
         $$ = new sentenciastruct;
-        sentenciastruct tmp;
-        *$$ = tmp;
         codigo.completarInstrucciones($3->trues,$5);
         codigo.completarInstrucciones($3->falses,$7 + 1);
         codigo.completarInstrucciones($6->exit,$7 + 1);
         codigo.completarInstrucciones($6->conti,$2);
         codigo.completarInstrucciones($11->exit,$12);
         codigo.completarInstrucciones($11->conti,$2);
+	delete $3;
         }
         | RFOREVER TDOSPT M bloque M
         {
         $$ = new sentenciastruct;
-        sentenciastruct tmp;
-        *$$ = tmp;
         codigo.anadirInstruccion("goto");
         vector<int> tmp1 ; tmp1.push_back($3) ;
     	codigo.completarInstrucciones(tmp1, $5) ;
         codigo.completarInstrucciones($4->exit, $5 + 1);
-        copiar($$->conti,$4->conti);
+        $$->conti = $4->conti;
         }
         | RBREAK RIF expresion M TSEMIC
         {
         $$ = new sentenciastruct;
-        sentenciastruct tmp;
-        *$$ = tmp;
         codigo.completarInstrucciones($3->falses, $4);
-        copiar($$->exit,$3->trues);
+        $$->exit = $3->trues;
         }
         | RCONTINUE TSEMIC
         {
         $$ = new sentenciastruct;
-        sentenciastruct tmp;
-        tmp.conti.push_back(codigo.obtenRef()) ;
-	*$$ = tmp;
+	vector<int> tmp;
+	tmp.push_back(codigo.obtenRef());
+	$$->conti = tmp;
         codigo.anadirInstruccion("goto"); 
         }
         | RREAD TABRIRPAREN variable TCERRARPAREN TSEMIC
         {
         $$ = new sentenciastruct;
-        sentenciastruct tmp;
-        *$$ = tmp;
         codigo.anadirInstruccion("read " + *$3 + ";");
         }
         | RPRINTLN TABRIRPAREN expresion  TCERRARPAREN TSEMIC
         {
         $$ = new sentenciastruct;
-        sentenciastruct tmp;
-        *$$ = tmp;
         codigo.anadirInstruccion( "write " + $3->str + ";");
         codigo.anadirInstruccion( "writeln;");
         }
@@ -344,10 +333,4 @@ vector<int> *unir(vector<int> lis1, vector<int> lis2){
         }
 
         return enteros;
-}
-
-void copiar(vector<int> &lis1, vector<int> lis2){
-        for (auto it = lis2.begin(); it != lis2.end(); it++){
-                lis1.push_back(*it);
-        }
 }
