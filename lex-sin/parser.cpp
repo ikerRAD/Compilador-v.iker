@@ -83,11 +83,12 @@
    expresionstruct makecomparison(std::string &s1, std::string &s2, std::string &s3) ;
    expresionstruct makearithmetic(std::string &s1, std::string &s2, std::string &s3) ;
    vector<int> *unir(vector<int> lis1, vector<int> lis2);
+   sentenciastruct makecontinue();
    Codigo codigo;
 
 
 
-#line 91 "parser.cpp" /* yacc.c:339  */
+#line 92 "parser.cpp" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -169,7 +170,7 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 31 "parser.y" /* yacc.c:355  */
+#line 32 "parser.y" /* yacc.c:355  */
 
     string *str ;
     vector<string> *list ;
@@ -178,7 +179,7 @@ union YYSTYPE
     int number ;
     vector<int> *numlist;
 
-#line 182 "parser.cpp" /* yacc.c:355  */
+#line 183 "parser.cpp" /* yacc.c:355  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -195,7 +196,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 199 "parser.cpp" /* yacc.c:358  */
+#line 200 "parser.cpp" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -496,12 +497,12 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint16 yyrline[] =
 {
-       0,    78,    78,    78,    85,    91,   100,   101,   104,   108,
+       0,    79,    79,    79,    86,    92,   100,   101,   104,   108,
      113,   117,   118,   122,   123,   126,   127,   130,   130,   134,
      135,   138,   138,   145,   146,   148,   149,   149,   156,   157,
-     164,   170,   180,   179,   197,   206,   212,   224,   229,   238,
-     241,   247,   253,   259,   265,   271,   277,   283,   289,   295,
-     301,   302,   303,   304,   307
+     164,   170,   179,   178,   198,   208,   214,   219,   224,   234,
+     237,   243,   249,   255,   261,   267,   273,   279,   285,   291,
+     297,   298,   299,   300,   303
 };
 #endif
 
@@ -1371,23 +1372,22 @@ yyreduce:
   switch (yyn)
     {
         case 2:
-#line 78 "parser.y" /* yacc.c:1646  */
+#line 79 "parser.y" /* yacc.c:1646  */
     { codigo.anadirInstruccion("proc main;"); }
-#line 1377 "parser.cpp" /* yacc.c:1646  */
+#line 1378 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 3:
-#line 81 "parser.y" /* yacc.c:1646  */
+#line 82 "parser.y" /* yacc.c:1646  */
     { codigo.anadirInstruccion("halt;" ) ;
              codigo.escribir();}
-#line 1384 "parser.cpp" /* yacc.c:1646  */
+#line 1385 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 5:
-#line 94 "parser.y" /* yacc.c:1646  */
+#line 95 "parser.y" /* yacc.c:1646  */
     {
-                (yyval.sent)->exit = (yyvsp[-1].sent)->exit;
-                (yyval.sent)->conti = (yyvsp[-1].sent)->conti;
+                (yyval.sent) = (yyvsp[-1].sent);
         }
 #line 1393 "parser.cpp" /* yacc.c:1646  */
     break;
@@ -1395,8 +1395,8 @@ yyreduce:
   case 8:
 #line 104 "parser.y" /* yacc.c:1646  */
     { codigo.anadirDeclaraciones(*(yyvsp[-2].list),*(yyvsp[0].str));
-                                                                  delete (yyvsp[-2].list);
-                                                                  delete (yyvsp[0].str);}
+  delete (yyvsp[-2].list);
+  delete (yyvsp[0].str);}
 #line 1401 "parser.cpp" /* yacc.c:1646  */
     break;
 
@@ -1512,237 +1512,233 @@ yyreduce:
 #line 171 "parser.y" /* yacc.c:1646  */
     {
         (yyval.sent) = new sentenciastruct;
-	(yyval.sent)->exit = (yyvsp[-1].sent)->exit;
-	(yyval.sent)->conti = (yyvsp[-1].sent)->conti;
+	(yyval.sent) = (yyvsp[-1].sent);
         codigo.completarInstrucciones((yyvsp[-4].expr)->trues,(yyvsp[-2].number));
         codigo.completarInstrucciones((yyvsp[-4].expr)->falses,(yyvsp[0].number));
 	delete (yyvsp[-4].expr);
         }
-#line 1522 "parser.cpp" /* yacc.c:1646  */
+#line 1521 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 32:
-#line 180 "parser.y" /* yacc.c:1646  */
+#line 179 "parser.y" /* yacc.c:1646  */
     {
         codigo.anadirInstruccion("goto");
         vector<int> *tmp1 = new vector<int>; 
 	tmp1->push_back((yyvsp[0].number)) ;
     	codigo.completarInstrucciones(*tmp1, (yyvsp[-5].number)) ;
         }
-#line 1533 "parser.cpp" /* yacc.c:1646  */
+#line 1532 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 33:
-#line 187 "parser.y" /* yacc.c:1646  */
+#line 186 "parser.y" /* yacc.c:1646  */
     {
         (yyval.sent) = new sentenciastruct;
         codigo.completarInstrucciones((yyvsp[-9].expr)->trues,(yyvsp[-7].number));
         codigo.completarInstrucciones((yyvsp[-9].expr)->falses,(yyvsp[-5].number) + 1);
         codigo.completarInstrucciones((yyvsp[-6].sent)->exit,(yyvsp[-5].number) + 1);
         codigo.completarInstrucciones((yyvsp[-6].sent)->conti,(yyvsp[-10].number));
-        codigo.completarInstrucciones((yyvsp[-1].sent)->exit,(yyvsp[0].number));
+        codigo.completarInstrucciones((yyvsp[-1].sent)->exit,(yyvsp[0].number));                  
         codigo.completarInstrucciones((yyvsp[-1].sent)->conti,(yyvsp[-10].number));
 	delete (yyvsp[-9].expr);
+	delete (yyvsp[-6].sent);
+	delete (yyvsp[-1].sent);
         }
-#line 1548 "parser.cpp" /* yacc.c:1646  */
+#line 1549 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 34:
-#line 198 "parser.y" /* yacc.c:1646  */
+#line 199 "parser.y" /* yacc.c:1646  */
     {
         (yyval.sent) = new sentenciastruct;
         codigo.anadirInstruccion("goto");
-        vector<int> tmp1 ; tmp1.push_back((yyvsp[-2].number)) ;
-    	codigo.completarInstrucciones(tmp1, (yyvsp[0].number)) ;
+        vector<int> *tmp1 = new vector<int>; 
+	tmp1->push_back((yyvsp[0].number)) ;
+    	codigo.completarInstrucciones(*tmp1, (yyvsp[-2].number)) ;
         codigo.completarInstrucciones((yyvsp[-1].sent)->exit, (yyvsp[0].number) + 1);
         (yyval.sent)->conti = (yyvsp[-1].sent)->conti;
         }
-#line 1561 "parser.cpp" /* yacc.c:1646  */
+#line 1563 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 35:
-#line 207 "parser.y" /* yacc.c:1646  */
+#line 209 "parser.y" /* yacc.c:1646  */
     {
         (yyval.sent) = new sentenciastruct;
         codigo.completarInstrucciones((yyvsp[-2].expr)->falses, (yyvsp[-1].number));
         (yyval.sent)->exit = (yyvsp[-2].expr)->trues;
         }
-#line 1571 "parser.cpp" /* yacc.c:1646  */
+#line 1573 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 36:
-#line 213 "parser.y" /* yacc.c:1646  */
+#line 215 "parser.y" /* yacc.c:1646  */
     {
         (yyval.sent) = new sentenciastruct;
-	vector<int> tmp(1,codigo.obtenRef());
-	sentenciastruct *tmp1 = new sentenciastruct;
-	tmp1->conti = tmp;
-	*(yyval.sent) = {.conti = tmp};
-	//tmp->push_back(codigo.obtenRef());
-	//$$->conti = tmp;
-	//$$->conti.push_back(codigo.obtenRef());
-        codigo.anadirInstruccion("goto"); 
+	*(yyval.sent) = makecontinue();
         }
-#line 1587 "parser.cpp" /* yacc.c:1646  */
+#line 1582 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 37:
-#line 225 "parser.y" /* yacc.c:1646  */
+#line 220 "parser.y" /* yacc.c:1646  */
     {
         (yyval.sent) = new sentenciastruct;
         codigo.anadirInstruccion("read " + *(yyvsp[-2].str) + ";");
         }
-#line 1596 "parser.cpp" /* yacc.c:1646  */
+#line 1591 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 38:
-#line 230 "parser.y" /* yacc.c:1646  */
+#line 225 "parser.y" /* yacc.c:1646  */
     {
         (yyval.sent) = new sentenciastruct;
         codigo.anadirInstruccion( "write " + (yyvsp[-2].expr)->str + ";");
         codigo.anadirInstruccion( "writeln;");
+	delete (yyvsp[-2].expr);
         }
-#line 1606 "parser.cpp" /* yacc.c:1646  */
+#line 1602 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 39:
-#line 238 "parser.y" /* yacc.c:1646  */
+#line 234 "parser.y" /* yacc.c:1646  */
     {(yyval.str) = (yyvsp[0].str);}
-#line 1612 "parser.cpp" /* yacc.c:1646  */
+#line 1608 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 40:
-#line 242 "parser.y" /* yacc.c:1646  */
+#line 238 "parser.y" /* yacc.c:1646  */
     { 
         (yyval.expr) = new expresionstruct;
 	*(yyval.expr) = makecomparison((yyvsp[-2].expr)->str,*(yyvsp[-1].str),(yyvsp[0].expr)->str) ; 
 	delete (yyvsp[-2].expr); delete (yyvsp[0].expr);
         }
-#line 1622 "parser.cpp" /* yacc.c:1646  */
+#line 1618 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 41:
-#line 248 "parser.y" /* yacc.c:1646  */
+#line 244 "parser.y" /* yacc.c:1646  */
     { 
         (yyval.expr) = new expresionstruct;
 	*(yyval.expr) = makecomparison((yyvsp[-2].expr)->str,*(yyvsp[-1].str),(yyvsp[0].expr)->str) ; 
 	delete (yyvsp[-2].expr); delete (yyvsp[0].expr);
         }
-#line 1632 "parser.cpp" /* yacc.c:1646  */
+#line 1628 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 42:
-#line 254 "parser.y" /* yacc.c:1646  */
+#line 250 "parser.y" /* yacc.c:1646  */
     { 
         (yyval.expr) = new expresionstruct;
 	*(yyval.expr) = makecomparison((yyvsp[-2].expr)->str,*(yyvsp[-1].str),(yyvsp[0].expr)->str) ; 
 	delete (yyvsp[-2].expr); delete (yyvsp[0].expr);
         }
-#line 1642 "parser.cpp" /* yacc.c:1646  */
+#line 1638 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 43:
-#line 260 "parser.y" /* yacc.c:1646  */
+#line 256 "parser.y" /* yacc.c:1646  */
     { 
         (yyval.expr) = new expresionstruct;
 	*(yyval.expr) = makecomparison((yyvsp[-2].expr)->str,*(yyvsp[-1].str),(yyvsp[0].expr)->str) ; 
 	delete (yyvsp[-2].expr); delete (yyvsp[0].expr);
         }
-#line 1652 "parser.cpp" /* yacc.c:1646  */
+#line 1648 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 44:
-#line 266 "parser.y" /* yacc.c:1646  */
+#line 262 "parser.y" /* yacc.c:1646  */
     { 
         (yyval.expr) = new expresionstruct;
 	*(yyval.expr) = makecomparison((yyvsp[-2].expr)->str,*(yyvsp[-1].str),(yyvsp[0].expr)->str) ; 
 	delete (yyvsp[-2].expr); delete (yyvsp[0].expr);
         }
-#line 1662 "parser.cpp" /* yacc.c:1646  */
+#line 1658 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 45:
-#line 272 "parser.y" /* yacc.c:1646  */
+#line 268 "parser.y" /* yacc.c:1646  */
     { 
         (yyval.expr) = new expresionstruct;
 	*(yyval.expr) = makecomparison((yyvsp[-2].expr)->str,*(yyvsp[-1].str),(yyvsp[0].expr)->str) ; 
 	delete (yyvsp[-2].expr); delete (yyvsp[0].expr);
         }
-#line 1672 "parser.cpp" /* yacc.c:1646  */
+#line 1668 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 46:
-#line 278 "parser.y" /* yacc.c:1646  */
+#line 274 "parser.y" /* yacc.c:1646  */
     {
         (yyval.expr) = new expresionstruct;
 	*(yyval.expr) = makearithmetic((yyvsp[-2].expr)->str,*(yyvsp[-1].str),(yyvsp[0].expr)->str) ;
 	delete (yyvsp[-2].expr); delete (yyvsp[0].expr);
         }
-#line 1682 "parser.cpp" /* yacc.c:1646  */
+#line 1678 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 47:
-#line 284 "parser.y" /* yacc.c:1646  */
+#line 280 "parser.y" /* yacc.c:1646  */
     {
         (yyval.expr) = new expresionstruct;
 	*(yyval.expr) = makearithmetic((yyvsp[-2].expr)->str,*(yyvsp[-1].str),(yyvsp[0].expr)->str) ;
 	delete (yyvsp[-2].expr); delete (yyvsp[0].expr);
         }
-#line 1692 "parser.cpp" /* yacc.c:1646  */
+#line 1688 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 48:
-#line 290 "parser.y" /* yacc.c:1646  */
+#line 286 "parser.y" /* yacc.c:1646  */
     {
         (yyval.expr) = new expresionstruct;
 	*(yyval.expr) = makearithmetic((yyvsp[-2].expr)->str,*(yyvsp[-1].str),(yyvsp[0].expr)->str) ;
 	delete (yyvsp[-2].expr); delete (yyvsp[0].expr);
         }
-#line 1702 "parser.cpp" /* yacc.c:1646  */
+#line 1698 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 49:
-#line 296 "parser.y" /* yacc.c:1646  */
+#line 292 "parser.y" /* yacc.c:1646  */
     {
         (yyval.expr) = new expresionstruct;
 	*(yyval.expr) = makearithmetic((yyvsp[-2].expr)->str,*(yyvsp[-1].str),(yyvsp[0].expr)->str) ;
 	delete (yyvsp[-2].expr); delete (yyvsp[0].expr);
         }
-#line 1712 "parser.cpp" /* yacc.c:1646  */
+#line 1708 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 50:
-#line 301 "parser.y" /* yacc.c:1646  */
+#line 297 "parser.y" /* yacc.c:1646  */
     { (yyval.expr) = new expresionstruct; (yyval.expr)->str = *(yyvsp[0].str); }
-#line 1718 "parser.cpp" /* yacc.c:1646  */
+#line 1714 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 51:
-#line 302 "parser.y" /* yacc.c:1646  */
+#line 298 "parser.y" /* yacc.c:1646  */
     { (yyval.expr) = new expresionstruct; (yyval.expr)->str = *(yyvsp[0].str); }
-#line 1724 "parser.cpp" /* yacc.c:1646  */
+#line 1720 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 52:
-#line 303 "parser.y" /* yacc.c:1646  */
+#line 299 "parser.y" /* yacc.c:1646  */
     { (yyval.expr) = new expresionstruct; (yyval.expr)->str = *(yyvsp[0].str); }
-#line 1730 "parser.cpp" /* yacc.c:1646  */
+#line 1726 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 53:
-#line 304 "parser.y" /* yacc.c:1646  */
+#line 300 "parser.y" /* yacc.c:1646  */
     {(yyval.expr) = (yyvsp[-1].expr);}
-#line 1736 "parser.cpp" /* yacc.c:1646  */
+#line 1732 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 54:
-#line 307 "parser.y" /* yacc.c:1646  */
+#line 303 "parser.y" /* yacc.c:1646  */
     { (yyval.number) = codigo.obtenRef() ; }
-#line 1742 "parser.cpp" /* yacc.c:1646  */
+#line 1738 "parser.cpp" /* yacc.c:1646  */
     break;
 
 
-#line 1746 "parser.cpp" /* yacc.c:1646  */
+#line 1742 "parser.cpp" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1970,7 +1966,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 309 "parser.y" /* yacc.c:1906  */
+#line 305 "parser.y" /* yacc.c:1906  */
 
 
 expresionstruct makecomparison(std::string &s1, std::string &s2, std::string &s3) {
@@ -1990,16 +1986,22 @@ expresionstruct makearithmetic(std::string &s1, std::string &s2, std::string &s3
   return tmp ;
 }
 
+sentenciastruct makecontinue() {
+  sentenciastruct tmp ; 
+  tmp.conti.push_back(codigo.obtenRef());
+  codigo.anadirInstruccion("goto") ;     
+  return tmp ;
+}
+
 vector<int> *unir(vector<int> lis1, vector<int> lis2){
         vector<int> *enteros = new vector<int>;
 
         for (auto it = lis1.begin(); it != lis1.end(); it++){
-                enteros->insert(enteros->begin(),*it);
+                enteros->push_back(*it);
         }
 
         for (auto it = lis2.begin(); it != lis2.end(); it++){
-                enteros->insert(enteros->begin(),*it);
+                enteros->push_back(*it);
         }
-
         return enteros;
 }

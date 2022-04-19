@@ -20,6 +20,7 @@
    expresionstruct makecomparison(std::string &s1, std::string &s2, std::string &s3) ;
    expresionstruct makearithmetic(std::string &s1, std::string &s2, std::string &s3) ;
    vector<int> *unir(vector<int> lis1, vector<int> lis2);
+   sentenciastruct makecontinue();
    Codigo codigo;
 
 
@@ -92,8 +93,7 @@ bloque : TABRIRLLAVE
         lista_de_sentencias
         TCERRARLLAVE
         {
-                $$->exit = $2->exit;
-                $$->conti = $2->conti;
+                $$ = $2;
         }
 ;
 
@@ -102,8 +102,8 @@ decl_bl : /* empty */
 ;
 
 declaraciones : declaraciones TSEMIC lista_de_ident TDOSPT tipo { codigo.anadirDeclaraciones(*$3,*$5);
-                                                                  delete $3;
-                                                                  delete $5;}
+  delete $3;
+  delete $5;}
 
         | lista_de_ident TDOSPT tipo { codigo.anadirDeclaraciones(*$1,*$3);
                                        delete $1;
@@ -170,8 +170,7 @@ sentencia : variable TEQ expresion TSEMIC
         | RIF expresion TDOSPT M bloque M
         {
         $$ = new sentenciastruct;
-	$$->exit = $5->exit;
-	$$->conti = $5->conti;
+	$$ = $5;
         codigo.completarInstrucciones($2->trues,$4);
         codigo.completarInstrucciones($2->falses,$6);
 	delete $2;
@@ -190,16 +189,19 @@ sentencia : variable TEQ expresion TSEMIC
         codigo.completarInstrucciones($3->falses,$7 + 1);
         codigo.completarInstrucciones($6->exit,$7 + 1);
         codigo.completarInstrucciones($6->conti,$2);
-        codigo.completarInstrucciones($11->exit,$12);
+        codigo.completarInstrucciones($11->exit,$12);                  
         codigo.completarInstrucciones($11->conti,$2);
 	delete $3;
+	delete $6;
+	delete $11;
         }
         | RFOREVER TDOSPT M bloque M
         {
         $$ = new sentenciastruct;
         codigo.anadirInstruccion("goto");
-        vector<int> tmp1 ; tmp1.push_back($3) ;
-    	codigo.completarInstrucciones(tmp1, $5) ;
+        vector<int> *tmp1 = new vector<int>; 
+	tmp1->push_back($5) ;
+    	codigo.completarInstrucciones(*tmp1, $3) ;
         codigo.completarInstrucciones($4->exit, $5 + 1);
         $$->conti = $4->conti;
         }
@@ -212,10 +214,7 @@ sentencia : variable TEQ expresion TSEMIC
         | RCONTINUE TSEMIC
         {
         $$ = new sentenciastruct;
-	vector<int> tmp;
-	tmp.push_back(codigo.obtenRef());
-	$$->conti = tmp;
-        codigo.anadirInstruccion("goto"); 
+	*$$ = makecontinue();
         }
         | RREAD TABRIRPAREN variable TCERRARPAREN TSEMIC
         {
@@ -227,6 +226,7 @@ sentencia : variable TEQ expresion TSEMIC
         $$ = new sentenciastruct;
         codigo.anadirInstruccion( "write " + $3->str + ";");
         codigo.anadirInstruccion( "writeln;");
+	delete $3;
         }
 ;
 
@@ -321,16 +321,22 @@ expresionstruct makearithmetic(std::string &s1, std::string &s2, std::string &s3
   return tmp ;
 }
 
+sentenciastruct makecontinue() {
+  sentenciastruct tmp ; 
+  tmp.conti.push_back(codigo.obtenRef());
+  codigo.anadirInstruccion("goto") ;     
+  return tmp ;
+}
+
 vector<int> *unir(vector<int> lis1, vector<int> lis2){
         vector<int> *enteros = new vector<int>;
 
         for (auto it = lis1.begin(); it != lis1.end(); it++){
-                enteros->insert(enteros->begin(),*it);
+                enteros->push_back(*it);
         }
 
         for (auto it = lis2.begin(); it != lis2.end(); it++){
-                enteros->insert(enteros->begin(),*it);
+                enteros->push_back(*it);
         }
-
         return enteros;
 }

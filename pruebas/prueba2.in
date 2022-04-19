@@ -15,6 +15,7 @@ let a,b, c : integer; d,e: float in {
 				break if resul > 1000000;
 				aux = aux - 1;
 				vueltas = vueltas + 1;
+				continue;
 			   } else: {
 				if resul < 0: { continue; }			
 				println(vueltas);	
