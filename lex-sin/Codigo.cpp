@@ -78,6 +78,22 @@ void Codigo::completarInstrucciones(vector<int> &numerosInstrucciones, const int
 }
 
 
+/****************************/
+/*     completar Switch     */
+/****************************/
+
+void Codigo::completarSwitch(std::vector<int> &saltos, const string &expresion){
+   stringstream cadena;
+   string st;
+   for(auto iter = saltos.begin(); iter != saltos.end(); iter++){
+   	st = expresion +" goto " ;
+	cadena << "" << *iter + 2;
+	instrucciones[*iter - 1].append(st + cadena.str() +";");
+	st = "";
+	cadena.str("");
+   }
+}
+
 /************/
 /* escribir */
 /************/

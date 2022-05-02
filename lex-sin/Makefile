@@ -20,6 +20,8 @@ prueba:  parser ../pruebas/prueba1.in ../pruebas/prueba2.in ../pruebas/prueba3.i
 	./parser <../pruebas/prueba1.in
 	./parser <../pruebas/prueba2.in
 	./parser <../pruebas/prueba3.in
+	./parser <../pruebas/prueba4.in
+	./parser <../pruebas/prueba5.in
 	./parser <../pruebas/pruebamala1.in
 	./parser <../pruebas/pruebamala2.in
 	./parser <../pruebas/pruebamala3.in

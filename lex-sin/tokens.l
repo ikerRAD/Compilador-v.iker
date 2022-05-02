@@ -36,7 +36,13 @@ println                                     TOKEN(RPRINTLN);
 read                                        TOKEN(RREAD);
 integer                                     TOKEN(RINT);
 float                                       TOKEN(RFLOAT);
+elseif					    TOKEN(RELSEIF);
+switch					    TOKEN(RSWITCH);
+case					    TOKEN(RCASE);
+default					    TOKEN(RDEFAULT);
+for					    TOKEN(RFOR);
 
+".."					    TOKEN(TPTPT);
 "{"                                         TOKEN(TABRIRLLAVE);
 "}"                                         TOKEN(TCERRARLLAVE);
 "("                                         TOKEN(TABRIRPAREN);
@@ -49,6 +55,10 @@ float                                       TOKEN(RFLOAT);
 
 
 [ \t\n]                                             ;
+
+or					    TOKEN(OOR);
+not					    TOKEN(ONOT);
+and					    TOKEN(OAND);
 
 "*"                                         TOKEN(OMULT);
 "+"                                         TOKEN(OSUM); 

@@ -58,6 +58,9 @@ public:
 	/* Devuelve el número de la siguiente instrucción. */
 	int obtenRef() const;
 
+	/* Crea las instrucciones if bool goto ref necesarias para un switch case y también el último goto ref*/
+	void completarSwitch(std::vector<int> &saltos, const std::string &expresion);
+
 };
 
 #endif /* CODIGO_HPP_ */

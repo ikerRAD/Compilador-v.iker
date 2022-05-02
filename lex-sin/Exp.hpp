@@ -13,4 +13,12 @@ struct sentenciastruct {
   vector<int> conti;
 };
 
+struct casestruct {
+  vector<int> gotos;
+  vector<int> exit;
+  vector<int> conti;
+  int ini;
+};
+
+
 #endif /* EXP_HPP_ */

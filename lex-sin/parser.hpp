@@ -62,28 +62,37 @@ extern int yydebug;
     RREAD = 272,
     RINT = 273,
     RFLOAT = 274,
-    TABRIRLLAVE = 275,
-    TCERRARLLAVE = 276,
-    TABRIRPAREN = 277,
-    TCERRARPAREN = 278,
-    TEQ = 279,
-    TDOSPT = 280,
-    TSEMIC = 281,
-    TAMP = 282,
-    TCOMA = 283,
-    OMULT = 284,
-    OSUM = 285,
-    OREST = 286,
-    ODIV = 287,
-    CEQ = 288,
-    CLT = 289,
-    CGT = 290,
-    CLE = 291,
-    CGE = 292,
-    CNE = 293,
-    TIDENTIFIER = 294,
-    TDOUBLE = 295,
-    TINTEGER = 296
+    RELSEIF = 275,
+    RSWITCH = 276,
+    RCASE = 277,
+    RDEFAULT = 278,
+    RFOR = 279,
+    TABRIRLLAVE = 280,
+    TCERRARLLAVE = 281,
+    TABRIRPAREN = 282,
+    TCERRARPAREN = 283,
+    TEQ = 284,
+    TDOSPT = 285,
+    TSEMIC = 286,
+    TAMP = 287,
+    TCOMA = 288,
+    TPTPT = 289,
+    OMULT = 290,
+    OSUM = 291,
+    OREST = 292,
+    ODIV = 293,
+    CEQ = 294,
+    CLT = 295,
+    CGT = 296,
+    CLE = 297,
+    CGE = 298,
+    CNE = 299,
+    OOR = 300,
+    ONOT = 301,
+    OAND = 302,
+    TIDENTIFIER = 303,
+    TDOUBLE = 304,
+    TINTEGER = 305
   };
 #endif
 
@@ -92,7 +101,7 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 32 "parser.y" /* yacc.c:1909  */
+#line 33 "parser.y" /* yacc.c:1909  */
 
     string *str ;
     vector<string> *list ;
@@ -100,8 +109,9 @@ union YYSTYPE
     sentenciastruct *sent ;
     int number ;
     vector<int> *numlist;
+    casestruct *cses;
 
-#line 105 "parser.hpp" /* yacc.c:1909  */
+#line 115 "parser.hpp" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;
