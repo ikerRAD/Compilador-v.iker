@@ -1,0 +1,13 @@
+def main ( ):
+'''Esta prueba verifica el correcto funcionamiento de las operaciones booleanas'''
+let a,b,c : integer; d,e: float in {
+
+   read(a); read(b);
+   d = 1/b;
+   e = 0.1e-1/a;
+   c = c*(c*d)+e;
+   println(c*c);
+   if c == a or not a+1 == a-1*2 and c > 1:{
+      c = 1;
+   }
+} # fin del main

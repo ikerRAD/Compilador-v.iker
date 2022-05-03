@@ -1,0 +1,18 @@
+def main ( ):
+'''Esta prueba verifica el correcto funionamiento de la anidación de bucles de los objetivos básicos'''
+let c : integer in {
+
+while c == 0:{
+ c = c+1*c+2;
+}else:{
+ forever:{
+  break if c == 3;
+  if c==2:{
+   h = efe +3;
+   continue;
+  }
+ }
+}
+
+println(c*c);
+} # fin del main

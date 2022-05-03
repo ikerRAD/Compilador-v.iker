@@ -1,0 +1,33 @@
+Traductor básico construido con las herramientas YACC y BISON.  
+  
+Se utiliza análisis léxico mediante expresiones LEX y análisis sintáctico 
+ascendente construido con elementos terminales y no terminales en sintaxis 
+Bison.  
+  
+ Autores, Grupo1: 
+ - Iker Pintado 
+ - Alvaro Rodrigo
+ - Iker Hidalgo
+
+ Autor de los objetivos avanzados de esta entrega:
+ - Iker Pintado
+
+Compilación y ejecuión:
+
+ Para compilar el traductor, simplemente se debe escribir el comando make
+ en una terminal situada en la carpeta fuente. Al compilar también se eje-
+ cutarán todas las pruebas en orden (primero las buenas y luego las malas).
+
+ Si se quieren ejecutar ficheros aparte una vez el traductor esté compilado,
+ simplemente se debe ejecutar el siguiente comando en una terminal (preferi-
+ blemente en una situada en el directorio donde estén los archivos compilados;
+ es decir, en fuente. Pero no es necesario):
+	- ./[ruta a fichero compilado 'parser'] <[ruta a fichero a traducir]
+	(en caso de que la terminal esté en fuente)
+	- ./parser <[ruta de fichero]
+ Ejemplo:
+  Estamos en el directorio fuente con una terminal abierta, supongamos que 
+  dentro de este directorio, hay otro llamado 'programas' y contiene 
+  'programa.dat' que queremos traducir. Debemos escribir el siguiente 
+  comando:
+	./parser <programas/programa.dat
