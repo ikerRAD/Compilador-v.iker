@@ -5,9 +5,9 @@ ascendente construido con elementos terminales y no terminales en sintaxis
 Bison.  
   
  Autores, Grupo1: 
- - Iker Pintado 
- - Alvaro Rodrigo
- - Iker Hidalgo
+ - Iker Pintado (ipintado003@ikasle.ehu.eus)
+ - Alvaro Rodrigo (arodrigo027@ikasle.ehu.eus)
+ - Iker Hidalgo (ihidalgo013@ikasle.ehu.eus)
 
  Autor de los objetivos avanzados de esta entrega:
  - Iker Pintado
