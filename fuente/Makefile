@@ -1,27 +1,30 @@
 CFLAGS=-Wall
+FUENTES=parser.cpp main.cpp tokens.cpp Codigo.cpp PilaTablaSimbolos.cpp TablaSimbolos.cpp
 
 all: parser prueba
 
 clean:
-	rm parser.cpp parser.hpp parser 
+	rm parser.cpp parser.hpp parser tokens.cpp *~
 
-parser.cpp: parser.y
-	bison -d -o $@ $^
+parser.cpp parser.hpp: parser.y Codigo.hpp PilaTablaSimbolos.hpp TablaSimbolos.hpp
+	bison -d -o $@ $<
 
 parser.hpp: parser.cpp
 
-tokens.cpp: tokens.l parser.hpp
-	lex -o $@ $^
+tokens.cpp: tokens.l parser.hpp PilaTablaSimbolos.hpp TablaSimbolos.hpp
+	lex -o $@ $<
 
-parser: parser.cpp main.cpp tokens.cpp
-	g++ $(CFLAGS) -o $@ *.cpp 
+parser: $(FUENTES) Codigo.hpp PilaTablaSimbolos.hpp TablaSimbolos.hpp
+	g++ $(CFLAGS) -o $@ $(FUENTES)
 
-prueba:  parser ../pruebas/pruebaBuena1.dat ../pruebas/pruebaBuena2.dat ../pruebas/pruebaBuena3.dat ../pruebas/pruebaBuena4.dat ../pruebas/pruebaBuena5.dat ../pruebas/pruebaMala1.dat ../pruebas/pruebaMala2.dat ../pruebas/pruebaMala3.dat
-	./parser <../pruebas/pruebaBuena1.dat
-	./parser <../pruebas/pruebaBuena2.dat
-	./parser <../pruebas/pruebaBuena3.dat
-	./parser <../pruebas/pruebaBuena4.dat
-	./parser <../pruebas/pruebaBuena5.dat
-	./parser <../pruebas/pruebaMala1.dat
-	./parser <../pruebas/pruebaMala2.dat
-	./parser <../pruebas/pruebaMala3.dat
+prueba:  
+	./parser <pruebas/pruebaBuena1.dat
+	./parser <pruebas/pruebaBuena2.dat
+	./parser <pruebas/pruebaBuena3.dat
+	./parser <pruebas/pruebaBuena4.dat
+	./parser <pruebas/pruebaBuena5.dat
+	./parser <pruebas/pruebaMala1.dat
+	./parser <pruebas/pruebaMala2.dat
+	./parser <pruebas/pruebaMala3.dat
+	./parser <pruebas/pruebaMala4.dat
+	./parser <pruebas/pruebaMala5.dat

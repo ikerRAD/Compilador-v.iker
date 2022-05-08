@@ -1,0 +1,54 @@
+def main ( ):
+'''Esta prueba testea los errores semánticos posibles que no tengan que ver con llamadas a subprogramas. Estos errores están brevemente explicados en comentarios'''
+let a,b, c : integer; d,e: float in {
+''' esto es un '
+ comentario multilinea '''
+
+	def sumar (x,y : integer; resul: & integer):
+	let aux, vueltas: integer; eo,oe,aux: float in { #variable declarada 2 veces	
+		eo = y; #error de asignación
+	   	resul = x;
+		break; #break inutil
+		break; #break inutil
+		continue; #continue inutil
+	   	if resul < 1000: {
+			vueltas = 0;
+			while aux == 0: {
+				resul = resul + 1;
+				break if resul > 1000000;
+				aux = aux - 1;
+				vueltas = vueltas + 1;
+				continue;
+			   } else: {
+				if 1+1 : { continue; }	#expresion no booleana cuando se requiere booleana		
+				println(vueltas);	
+			} 
+	    	}  
+
+	 } # fin de sumar
+	def sumar : #redeclaración de metodo (mismo id)
+	let aux, vueltas: integer in {	
+		aux = 1+1;
+
+	 } # fin de sumar
+   
+   read(a); read(b);
+   d = 1/b; #asignar a variable float una operación entera
+   noexist = 1+1; #variable no declarada
+   e = 0.1e-1/a;
+   ''' sumar(a,b,c); esto solo para aquellos que 
+                   traten llamadas a procedimientos '''
+   sumar(a+8,b*b,c);
+   c = c*(c*a)+b;
+   for c in 1..2..1:{} #variable ya declarada se usa como indice, además borrará c, causando problemas
+   for i in 1..2..1:{} 
+   for i in 1..2..1.5:{} #expresión no entera (float)
+   i = 2; #usando variable del for fuera del bucle
+   println(1 == 1); #expresión booleana no permitida
+   switch a:{
+	case 1.0: #constante no matchea con la expresion
+	break;
+	;
+   }
+
+} # fin del main

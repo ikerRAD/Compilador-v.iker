@@ -1,6 +1,6 @@
 def main ( ):
 '''Esta prueba verifica el correcto funionamiento de la anidación de bucles de los objetivos básicos'''
-let c : integer in {
+let c,h,efe : integer in {
 
 while c == 0:{
  c = c+1*c+2;

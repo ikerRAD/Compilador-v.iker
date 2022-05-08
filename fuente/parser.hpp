@@ -101,7 +101,7 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 33 "parser.y" /* yacc.c:1909  */
+#line 42 "parser.y" /* yacc.c:1909  */
 
     string *str ;
     vector<string> *list ;
@@ -110,8 +110,10 @@ union YYSTYPE
     int number ;
     vector<int> *numlist;
     casestruct *cses;
+    ctestruct *constant;
+    lexprstruct *lexpr;
 
-#line 115 "parser.hpp" /* yacc.c:1909  */
+#line 117 "parser.hpp" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

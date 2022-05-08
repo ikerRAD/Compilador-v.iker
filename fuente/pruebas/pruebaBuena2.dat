@@ -1,5 +1,5 @@
 def main ( ):
-'''Esta prueba verifica el correcto funcionamiento de un programa básico'''
+'''Esta prueba verifica el correcto funcionamiento de un programa básico más la llamada a subprogramas'''
 let a,b, c : integer; d,e: float in {
 ''' esto es un '
  comentario multilinea '''
@@ -26,10 +26,11 @@ let a,b, c : integer; d,e: float in {
 
    
    read(a); read(b);
-   d = 1/b;
+   d = 1.0/b;
    e = 0.1e-1/a;
    ''' sumar(a,b,c); esto solo para aquellos que 
                    traten llamadas a procedimientos '''
-   c = c*(c*d)+e;
+   sumar(a+8,b*b,c);
+   c = c*(c*a)+b;
    println(c*c);
 } # fin del main
