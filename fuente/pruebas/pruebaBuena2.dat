@@ -1,11 +1,19 @@
 def main ( ):
-'''Esta prueba verifica el correcto funcionamiento de un programa básico más la llamada a subprogramas'''
+'''Esta prueba verifica el correcto funcionamiento de un programa básico más la llamada a subprogramas y la declaración de subprogramas anidados'''
 let a,b, c : integer; d,e: float in {
 ''' esto es un '
  comentario multilinea '''
 
 	def sumar (x,y : integer; resul: & integer):
 	let aux, vueltas: integer in {	
+		def sumar2 (x,y : integer; resul: & integer):
+			let aux, vueltas: integer in {	
+				def sumar3 (x,y : integer; resul: & integer):
+					let aux, vueltas: integer in {	
+						aux = y;
+					 }
+				aux = y;
+			 }
 		aux = y;
 	   	resul = x;
 	   	if resul < 1000: {

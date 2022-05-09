@@ -71,6 +71,8 @@ public:
 	 * eleva una excepción. */
 	void verificarNumArgs(std::string proc, int numArgs);
 
+	/* Dado un Id nos dice si está definido en la T_S o no. */
+	bool existeId(std::string id);
 };
 
 #endif /* PILATABLASIMBOLOS_HPP_ */

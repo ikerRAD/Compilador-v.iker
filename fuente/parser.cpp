@@ -2836,37 +2836,37 @@ void imprimir_errores(){
 	switch(errores[i])
 	{
 		case 1:
-		cout<<"Error. Id '"+msgs[i]+"' ya está declarado"<<endl;
+		cout<<"Error: Id '"+msgs[i]+"' ya está declarado"<<endl;
 		break;
 		case 2:
-		cout<<"Error. "+msgs[i]+" breaks inútiles"<<endl;
+		cout<<"Error: "+msgs[i]+" breaks inútiles"<<endl;
 		break;
 		case 3:
-		cout<<"Error. "+msgs[i]+" continues inútiles"<<endl;
+		cout<<"Error: "+msgs[i]+" continues inútiles"<<endl;
 		break;
 		case 4:
-		cout<<"Error. Id '"+msgs[i]+"' no está declarado"<<endl;
+		cout<<"Error: Id '"+msgs[i]+"' no está declarado"<<endl;
 		break;
 		case 5:
-		cout<<"Error. Asinación con tipo erroneo, se espera "+msgs[i]<<endl;
+		cout<<"Error: Asinación con tipo erroneo, se espera "+msgs[i]<<endl;
 		break;
 		case 6:
-		cout<<"Error. Se espera expresión booleana, '"+msgs[i]+"' recibido"<<endl;
+		cout<<"Error: Se espera expresión booleana, '"+msgs[i]+"' recibido"<<endl;
 		break;
 		case 7:
-		cout<<"Error. Expresión entera requerida"<<endl;
+		cout<<"Error: Expresión entera requerida"<<endl;
 		break;
 		case 8:
-		cout<<"Error. Se requiere una expresión real o entera"<<endl;
+		cout<<"Error: Se requiere una expresión real o entera"<<endl;
 		break;
 		case 9:
-		cout<<"Error. Algunas constantes no cuadran con la expresión de tipo "+msgs[i]<<endl;
+		cout<<"Error: Algunas constantes no cuadran con la expresión de tipo "+msgs[i]<<endl;
 		break;
 		case 10:
-		cout<<"Error. Llamada a '"+msgs[i]+"' no ha recibido el número de parámetros correcto"<<endl;
+		cout<<"Error: Llamada a '"+msgs[i]+"' no ha recibido el número de parámetros correcto"<<endl;
 		break;
 		case 11:
-		cout<<"Error. Se requiere una variable como parámetro"<<endl;
+		cout<<"Error: Se requiere una variable como parámetro"<<endl;
 		break;
 		default:
 		cout<<"Error desconocido"<<endl;
