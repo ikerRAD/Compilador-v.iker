@@ -73,6 +73,9 @@ public:
 
 	/* Dado un Id nos dice si está definido en la T_S o no. */
 	bool existeId(std::string id);
+
+	/* Dado el Id de un procedimiento devuelve el número de parametros que tiene o -1 si no existe */
+	int numArgsProcedimiento(std::string proc);
 };
 
 #endif /* PILATABLASIMBOLOS_HPP_ */

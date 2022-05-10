@@ -1715,7 +1715,7 @@ yyreduce:
 #line 277 "parser.y" /* yacc.c:1646  */
     {
         (yyval.sent) = new sentenciastruct; 
-	if(!pila.tope().existeId(*(yyvsp[-3].str))){
+	if(!pila.existeId(*(yyvsp[-3].str))){
 	    errores.push_back(4);
 	    numErrores++; 
 	    msgs.push_back(*(yyvsp[-3].str));
@@ -1830,7 +1830,7 @@ yyreduce:
   case 38:
 #line 367 "parser.y" /* yacc.c:1646  */
     {
-	if(!pila.tope().existeId(*(yyvsp[-2].str))){
+	if(!pila.existeId(*(yyvsp[-2].str))){
 	    errores.push_back(4);
 	    numErrores++; 
 	    msgs.push_back(*(yyvsp[-2].str));
@@ -1997,18 +1997,18 @@ yyreduce:
 #line 508 "parser.y" /* yacc.c:1646  */
     {
 	(yyval.sent) = new sentenciastruct;
-	if(!pila.tope().existeId(*(yyvsp[-4].str))){
+	if(!pila.existeId(*(yyvsp[-4].str))){
 	    errores.push_back(4);
 	    numErrores++; 
 	    msgs.push_back(*(yyvsp[-4].str));
-	}else if((int)(yyvsp[-2].lexpr)->exprs.size() != pila.tope().numArgsProcedimiento(*(yyvsp[-4].str))){
+	}else if((int)(yyvsp[-2].lexpr)->exprs.size() != pila.numArgsProcedimiento(*(yyvsp[-4].str))){
 	    errores.push_back(10);
 	    numErrores++; 
 	    msgs.push_back(*(yyvsp[-4].str));
 	}else{
 	    pair<string,string> param;
-	    for(int i = 0; i < pila.tope().numArgsProcedimiento(*(yyvsp[-4].str)); i++){
-		param = pila.tope().obtenerTiposParametro(*(yyvsp[-4].str), i);
+	    for(int i = 0; i < pila.numArgsProcedimiento(*(yyvsp[-4].str)); i++){
+		param = pila.obtenerTiposParametro(*(yyvsp[-4].str), i);
 		if((yyvsp[-2].lexpr)->tipes[i].compare(param.second) != 0){
 		    errores.push_back(5);
 	    	    numErrores++; 
@@ -2503,7 +2503,7 @@ cout<<"6"<<endl;
 #line 884 "parser.y" /* yacc.c:1646  */
     { 
 		(yyval.expr) = new expresionstruct; 
-		if(!pila.tope().existeId(*(yyvsp[0].str))){
+		if(!pila.existeId(*(yyvsp[0].str))){
 		    errores.push_back(4);
 	    	    numErrores++; 
 	    	    msgs.push_back(*(yyvsp[0].str));

@@ -28,7 +28,7 @@ void TablaSimbolos::anadirVariable(string id, string tipo) {
 /* anadirProcedimiento */
 /***********************/
 
-void TablaSimbolos::anadirProcedimiento(std::string id) {
+void TablaSimbolos::anadirProcedimiento(string id) {
 	InfoSimbolo infoSimbolo;
 	infoSimbolo.tipoId = string("procedimiento");
 	if (!tabla.insert(pair<string, InfoSimbolo> (id, infoSimbolo)).second) {
@@ -91,7 +91,7 @@ pair<string, string> TablaSimbolos::obtenerTiposParametro(string id, int numPara
 /* numArgsProcedimiento */
 /************************/
 
-int TablaSimbolos::numArgsProcedimiento(std::string proc) {
+int TablaSimbolos::numArgsProcedimiento(string proc) {
 	return tabla.find(proc)->second.parametrosProc.size();
 }
 

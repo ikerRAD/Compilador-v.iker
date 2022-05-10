@@ -276,7 +276,7 @@ lista_de_sentencias : /* empty */ {$$ = new sentenciastruct;}
 sentencia : variable TEQ expresion TSEMIC
         {
         $$ = new sentenciastruct; 
-	if(!pila.tope().existeId(*$1)){
+	if(!pila.existeId(*$1)){
 	    errores.push_back(4);
 	    numErrores++; 
 	    msgs.push_back(*$1);
@@ -365,7 +365,7 @@ sentencia : variable TEQ expresion TSEMIC
 
         | RREAD TABRIRPAREN variable TCERRARPAREN TSEMIC
         {
-	if(!pila.tope().existeId(*$3)){
+	if(!pila.existeId(*$3)){
 	    errores.push_back(4);
 	    numErrores++; 
 	    msgs.push_back(*$3);
@@ -507,18 +507,18 @@ sentencia : variable TEQ expresion TSEMIC
 
 	| TIDENTIFIER TABRIRPAREN lista_expresiones TCERRARPAREN TSEMIC {
 	$$ = new sentenciastruct;
-	if(!pila.tope().existeId(*$1)){
+	if(!pila.existeId(*$1)){
 	    errores.push_back(4);
 	    numErrores++; 
 	    msgs.push_back(*$1);
-	}else if((int)$3->exprs.size() != pila.tope().numArgsProcedimiento(*$1)){
+	}else if((int)$3->exprs.size() != pila.numArgsProcedimiento(*$1)){
 	    errores.push_back(10);
 	    numErrores++; 
 	    msgs.push_back(*$1);
 	}else{
 	    pair<string,string> param;
-	    for(int i = 0; i < pila.tope().numArgsProcedimiento(*$1); i++){
-		param = pila.tope().obtenerTiposParametro(*$1, i);
+	    for(int i = 0; i < pila.numArgsProcedimiento(*$1); i++){
+		param = pila.obtenerTiposParametro(*$1, i);
 		if($3->tipes[i].compare(param.second) != 0){
 		    errores.push_back(5);
 	    	    numErrores++; 
@@ -883,7 +883,7 @@ expresion : expresion CEQ expresion
         }     
         | variable { 
 		$$ = new expresionstruct; 
-		if(!pila.tope().existeId(*$1)){
+		if(!pila.existeId(*$1)){
 		    errores.push_back(4);
 	    	    numErrores++; 
 	    	    msgs.push_back(*$1);

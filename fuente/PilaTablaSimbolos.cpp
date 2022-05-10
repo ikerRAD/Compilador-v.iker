@@ -122,3 +122,45 @@ void PilaTablaSimbolos::verificarNumArgs(string proc, int numArgs) {
 		throw string("Error semántico. Número de argumentos incorrecto en la llamada al procedimiento " + proc);
 	}
 }
+
+/************/
+/* existeID */
+/************/
+
+bool PilaTablaSimbolos::existeId(string id) {
+
+	if (pila.empty()) {
+		return false;
+	}
+
+	Elemento *elemento = &pila.top();
+
+	while (elemento != 0) {
+		if(elemento->st.existeId(id)) {
+			return true;
+		}
+		elemento = elemento->ambitoSuperior;
+	}
+	return false;
+}
+
+/********************/
+/* verificarNumArgs */
+/********************/
+
+int PilaTablaSimbolos::numArgsProcedimiento(string proc) {
+
+	if (pila.empty()) {
+		return -1;
+	}
+
+	Elemento *elemento = &pila.top();
+
+	while (elemento != 0) {
+		if(elemento->st.existeId(proc)) {
+			return elemento->st.numArgsProcedimiento(proc);
+		}
+		elemento = elemento->ambitoSuperior;
+	}
+	return -1;
+}
