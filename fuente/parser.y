@@ -665,13 +665,12 @@ parte_else: RELSEIF expresion TDOSPT M bloque N M parte_else M {
 	if($2->tipo != "bool"){
 		errores.push_back(6);
 	    	numErrores++; 
-cout<<"6"<<endl;
 	    	msgs.push_back($2->tipo);
 	}
 	$$->exit = $5->exit;
 	$$->conti = $5->conti;
-	codigo.completarInstrucciones($2->falses, $4);
-	codigo.completarInstrucciones($2->trues, $6);
+	codigo.completarInstrucciones($2->falses, $6);
+	codigo.completarInstrucciones($2->trues, $4);
 	delete $2;
 	}
 ;
