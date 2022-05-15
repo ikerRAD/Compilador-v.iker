@@ -1,0 +1,17 @@
+ha comenzado...
+
+Error: Id 'aux' ya está declarado
+Error: Asinación con tipo erroneo, se espera real
+Error: Se espera expresión booleana, 'int' recibido
+Error: 2 breaks inútiles
+Error: 1 continues inútiles
+Error: Id 'sumar' ya está declarado
+Error: Asinación con tipo erroneo, se espera real
+Error: Id 'noexist' no está declarado
+Error: Id 'c' ya está declarado
+Error: Expresión entera requerida
+Error: Id 'i' no está declarado
+Error: Se requiere una expresión real o entera
+Error: Algunas constantes no cuadran con la expresión de tipo int
+ha finalizado BIEN...
+

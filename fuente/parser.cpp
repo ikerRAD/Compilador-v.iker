@@ -526,9 +526,9 @@ static const yytype_uint16 yyrline[] =
      276,   292,   307,   306,   332,   343,   348,   360,   366,   377,
      391,   409,   409,   487,   508,   539,   543,   555,   559,   571,
      575,   580,   585,   588,   585,   607,   609,   615,   618,   615,
-     639,   657,   663,   679,   682,   696,   710,   724,   738,   752,
-     766,   783,   799,   815,   832,   849,   866,   884,   895,   896,
-     897,   900,   903
+     639,   657,   663,   678,   681,   695,   709,   723,   737,   751,
+     765,   782,   798,   814,   831,   848,   865,   883,   894,   895,
+     896,   899,   902
 };
 #endif
 
@@ -2017,7 +2017,7 @@ yyreduce:
 		    errores.push_back(11);
 	    	    numErrores++; 
 	    	    msgs.push_back("");
-		}else codigo.anadirInstruccion("param_"+ param.first +"_"+ (yyvsp[-2].lexpr)->exprs[i] +";");
+		}else codigo.anadirInstruccion("param_"+ param.first +" "+ (yyvsp[-2].lexpr)->exprs[i] +";");
 	    }
 	    codigo.anadirInstruccion("call "+ *(yyvsp[-4].str) +";");
 	}
@@ -2227,26 +2227,25 @@ yyreduce:
 	if((yyvsp[-4].expr)->tipo != "bool"){
 		errores.push_back(6);
 	    	numErrores++; 
-cout<<"6"<<endl;
 	    	msgs.push_back((yyvsp[-4].expr)->tipo);
 	}
 	(yyval.sent)->exit = (yyvsp[-1].sent)->exit;
 	(yyval.sent)->conti = (yyvsp[-1].sent)->conti;
-	codigo.completarInstrucciones((yyvsp[-4].expr)->falses, (yyvsp[-2].number));
-	codigo.completarInstrucciones((yyvsp[-4].expr)->trues, (yyvsp[0].number));
+	codigo.completarInstrucciones((yyvsp[-4].expr)->falses, (yyvsp[0].number));
+	codigo.completarInstrucciones((yyvsp[-4].expr)->trues, (yyvsp[-2].number));
 	delete (yyvsp[-4].expr);
 	}
-#line 2240 "parser.cpp" /* yacc.c:1646  */
+#line 2239 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 63:
-#line 679 "parser.y" /* yacc.c:1646  */
+#line 678 "parser.y" /* yacc.c:1646  */
     {(yyval.str) = (yyvsp[0].str);}
-#line 2246 "parser.cpp" /* yacc.c:1646  */
+#line 2245 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 64:
-#line 683 "parser.y" /* yacc.c:1646  */
+#line 682 "parser.y" /* yacc.c:1646  */
     { 
         (yyval.expr) = new expresionstruct;
 	if((yyvsp[-2].expr)->tipo == "bool" || (yyvsp[0].expr)->tipo == "bool"){
@@ -2260,11 +2259,11 @@ cout<<"6"<<endl;
 	}
 	delete (yyvsp[-2].expr); delete (yyvsp[0].expr);
         }
-#line 2264 "parser.cpp" /* yacc.c:1646  */
+#line 2263 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 65:
-#line 697 "parser.y" /* yacc.c:1646  */
+#line 696 "parser.y" /* yacc.c:1646  */
     { 
         (yyval.expr) = new expresionstruct;
 	if((yyvsp[-2].expr)->tipo == "bool" || (yyvsp[0].expr)->tipo == "bool"){
@@ -2278,11 +2277,11 @@ cout<<"6"<<endl;
 	}
 	delete (yyvsp[-2].expr); delete (yyvsp[0].expr);
         }
-#line 2282 "parser.cpp" /* yacc.c:1646  */
+#line 2281 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 66:
-#line 711 "parser.y" /* yacc.c:1646  */
+#line 710 "parser.y" /* yacc.c:1646  */
     { 
         (yyval.expr) = new expresionstruct;
 	if((yyvsp[-2].expr)->tipo == "bool" || (yyvsp[0].expr)->tipo == "bool"){
@@ -2296,11 +2295,11 @@ cout<<"6"<<endl;
 	}
 	delete (yyvsp[-2].expr); delete (yyvsp[0].expr);
         }
-#line 2300 "parser.cpp" /* yacc.c:1646  */
+#line 2299 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 67:
-#line 725 "parser.y" /* yacc.c:1646  */
+#line 724 "parser.y" /* yacc.c:1646  */
     { 
         (yyval.expr) = new expresionstruct;
 	if((yyvsp[-2].expr)->tipo == "bool" || (yyvsp[0].expr)->tipo == "bool"){
@@ -2314,11 +2313,11 @@ cout<<"6"<<endl;
 	} 
 	delete (yyvsp[-2].expr); delete (yyvsp[0].expr);
         }
-#line 2318 "parser.cpp" /* yacc.c:1646  */
+#line 2317 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 68:
-#line 739 "parser.y" /* yacc.c:1646  */
+#line 738 "parser.y" /* yacc.c:1646  */
     { 
         (yyval.expr) = new expresionstruct;
 	if((yyvsp[-2].expr)->tipo == "bool" || (yyvsp[0].expr)->tipo == "bool"){
@@ -2332,11 +2331,11 @@ cout<<"6"<<endl;
 	}
 	delete (yyvsp[-2].expr); delete (yyvsp[0].expr);
         }
-#line 2336 "parser.cpp" /* yacc.c:1646  */
+#line 2335 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 69:
-#line 753 "parser.y" /* yacc.c:1646  */
+#line 752 "parser.y" /* yacc.c:1646  */
     { 
         (yyval.expr) = new expresionstruct;
 	if((yyvsp[-2].expr)->tipo == "bool" || (yyvsp[0].expr)->tipo == "bool"){
@@ -2350,11 +2349,11 @@ cout<<"6"<<endl;
 	}
 	delete (yyvsp[-2].expr); delete (yyvsp[0].expr);
         }
-#line 2354 "parser.cpp" /* yacc.c:1646  */
+#line 2353 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 70:
-#line 767 "parser.y" /* yacc.c:1646  */
+#line 766 "parser.y" /* yacc.c:1646  */
     {
 	(yyval.expr) = new expresionstruct;
 	expresionstruct tmp;
@@ -2371,11 +2370,11 @@ cout<<"6"<<endl;
 	tmp.esVar = 0;
 	*(yyval.expr) = tmp;
 	}
-#line 2375 "parser.cpp" /* yacc.c:1646  */
+#line 2374 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 71:
-#line 784 "parser.y" /* yacc.c:1646  */
+#line 783 "parser.y" /* yacc.c:1646  */
     {
 	(yyval.expr) = new expresionstruct;
 	expresionstruct tmp;
@@ -2391,11 +2390,11 @@ cout<<"6"<<endl;
 	tmp.esVar = 0;
 	*(yyval.expr) = tmp;
 	}
-#line 2395 "parser.cpp" /* yacc.c:1646  */
+#line 2394 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 72:
-#line 800 "parser.y" /* yacc.c:1646  */
+#line 799 "parser.y" /* yacc.c:1646  */
     {
 	(yyval.expr) = new expresionstruct;
 	expresionstruct tmp;
@@ -2411,11 +2410,11 @@ cout<<"6"<<endl;
 	tmp.esVar = 0;
 	*(yyval.expr) = tmp;
 	}
-#line 2415 "parser.cpp" /* yacc.c:1646  */
+#line 2414 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 73:
-#line 816 "parser.y" /* yacc.c:1646  */
+#line 815 "parser.y" /* yacc.c:1646  */
     {
         (yyval.expr) = new expresionstruct;
 	*(yyval.expr) = makearithmetic((yyvsp[-2].expr)->str,*(yyvsp[-1].str),(yyvsp[0].expr)->str) ;
@@ -2432,11 +2431,11 @@ cout<<"6"<<endl;
 	(yyval.expr)->esVar = 0;
 	delete (yyvsp[0].expr);
         }
-#line 2436 "parser.cpp" /* yacc.c:1646  */
+#line 2435 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 74:
-#line 833 "parser.y" /* yacc.c:1646  */
+#line 832 "parser.y" /* yacc.c:1646  */
     {
         (yyval.expr) = new expresionstruct;
 	*(yyval.expr) = makearithmetic((yyvsp[-2].expr)->str,*(yyvsp[-1].str),(yyvsp[0].expr)->str) ;
@@ -2453,11 +2452,11 @@ cout<<"6"<<endl;
 	(yyval.expr)->esVar = 0;
 	delete (yyvsp[0].expr);
         }
-#line 2457 "parser.cpp" /* yacc.c:1646  */
+#line 2456 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 75:
-#line 850 "parser.y" /* yacc.c:1646  */
+#line 849 "parser.y" /* yacc.c:1646  */
     {
         (yyval.expr) = new expresionstruct;
 	*(yyval.expr) = makearithmetic((yyvsp[-2].expr)->str,*(yyvsp[-1].str),(yyvsp[0].expr)->str) ;
@@ -2474,11 +2473,11 @@ cout<<"6"<<endl;
 	(yyval.expr)->esVar = 0;
 	delete (yyvsp[0].expr);
         }
-#line 2478 "parser.cpp" /* yacc.c:1646  */
+#line 2477 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 76:
-#line 867 "parser.y" /* yacc.c:1646  */
+#line 866 "parser.y" /* yacc.c:1646  */
     {
         (yyval.expr) = new expresionstruct;
 	codigo.anadirInstruccion("if "+ (yyvsp[0].expr)->str +" = 0 goto 8;");
@@ -2496,11 +2495,11 @@ cout<<"6"<<endl;
 	(yyval.expr)->esVar = 0;
 	delete (yyvsp[0].expr);
         }
-#line 2500 "parser.cpp" /* yacc.c:1646  */
+#line 2499 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 77:
-#line 884 "parser.y" /* yacc.c:1646  */
+#line 883 "parser.y" /* yacc.c:1646  */
     { 
 		(yyval.expr) = new expresionstruct; 
 		if(!pila.existeId(*(yyvsp[0].str))){
@@ -2512,43 +2511,43 @@ cout<<"6"<<endl;
 		(yyval.expr)->str = *(yyvsp[0].str); 
 		(yyval.expr)->esVar = 1; 
 	}
-#line 2516 "parser.cpp" /* yacc.c:1646  */
+#line 2515 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 78:
-#line 895 "parser.y" /* yacc.c:1646  */
+#line 894 "parser.y" /* yacc.c:1646  */
     { (yyval.expr) = new expresionstruct; (yyval.expr)->tipo = "int"; (yyval.expr)->esVar = 0;  (yyval.expr)->str = *(yyvsp[0].str); }
-#line 2522 "parser.cpp" /* yacc.c:1646  */
+#line 2521 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 79:
-#line 896 "parser.y" /* yacc.c:1646  */
+#line 895 "parser.y" /* yacc.c:1646  */
     { (yyval.expr) = new expresionstruct; (yyval.expr)->tipo = "real"; (yyval.expr)->esVar = 0; (yyval.expr)->str = *(yyvsp[0].str); }
-#line 2528 "parser.cpp" /* yacc.c:1646  */
+#line 2527 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 80:
-#line 897 "parser.y" /* yacc.c:1646  */
+#line 896 "parser.y" /* yacc.c:1646  */
     {(yyval.expr) = (yyvsp[-1].expr); (yyval.expr)->esVar = 0;}
-#line 2534 "parser.cpp" /* yacc.c:1646  */
+#line 2533 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 81:
-#line 900 "parser.y" /* yacc.c:1646  */
+#line 899 "parser.y" /* yacc.c:1646  */
     { (yyval.number) = codigo.obtenRef() ; }
-#line 2540 "parser.cpp" /* yacc.c:1646  */
+#line 2539 "parser.cpp" /* yacc.c:1646  */
     break;
 
   case 82:
-#line 903 "parser.y" /* yacc.c:1646  */
+#line 902 "parser.y" /* yacc.c:1646  */
     { (yyval.numlist) = new vector<int>;
       (yyval.numlist)->push_back(codigo.obtenRef());
       codigo.anadirInstruccion("goto");}
-#line 2548 "parser.cpp" /* yacc.c:1646  */
+#line 2547 "parser.cpp" /* yacc.c:1646  */
     break;
 
 
-#line 2552 "parser.cpp" /* yacc.c:1646  */
+#line 2551 "parser.cpp" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2776,7 +2775,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 907 "parser.y" /* yacc.c:1906  */
+#line 906 "parser.y" /* yacc.c:1906  */
 
 
 expresionstruct makecomparison(std::string &s1, const std::string &s2, std::string &s3) {

@@ -1,0 +1,37 @@
+ha comenzado...
+
+1: goto 11;
+2: write "Error, el salto del bucle for debe ser distinto de 0";
+3: writeln;
+4: goto 33;
+5: write "Error, el bucle tipo for es infinito";
+6: writeln;
+7: goto 33;
+8: write "Error, división entre 0. Resultado indefinido";
+9: writeln;
+10: goto 33;
+11: proc main;
+12: int c;
+13: int h;
+14: int efe;
+15: if c=0 goto 17;
+16: goto 22;
+17: _t1:=1*c;
+18: _t2:=c+_t1;
+19: _t3:=_t2+2;
+20: c := _t3;
+21: goto 15;
+22: if c=3 goto 30;
+23: goto 24;
+24: if c=2 goto 26;
+25: goto 29;
+26: _t4:=efe+3;
+27: h := _t4;
+28: goto 15;
+29: goto 22;
+30: _t5:=c*c;
+31: write _t5;
+32: writeln;
+33: halt;
+ha finalizado BIEN...
+
