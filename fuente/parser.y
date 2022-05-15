@@ -527,7 +527,7 @@ sentencia : variable TEQ expresion TSEMIC
 		    errores.push_back(11);
 	    	    numErrores++; 
 	    	    msgs.push_back("");
-		}else codigo.anadirInstruccion("param_"+ param.first +"_"+ $3->exprs[i] +";");
+		}else codigo.anadirInstruccion("param_"+ param.first +" "+ $3->exprs[i] +";");
 	    }
 	    codigo.anadirInstruccion("call "+ *$1 +";");
 	}
