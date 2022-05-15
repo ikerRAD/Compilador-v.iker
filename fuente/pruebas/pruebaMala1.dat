@@ -17,7 +17,7 @@ let a,b,c : integer; d,e: float in {
 				aux = aux - 1;
 				vueltas = vueltas + 1;
 			   } else: {
-				#if resul < 0: { continue; }			
+				#if resul < 0: { continue; }	almoadilla aquí		
 				println(vueltas);	
 			}fin del while-else
 	    	}  fin del if

@@ -1,5 +1,6 @@
 def main ( ):
-'''Esta prueba verifica el correcto funcionamiento de un programa básico más la llamada a subprogramas y la declaración de subprogramas anidados. Hay ejemplos de llamadas a subprogramas y variables de ambitos superiores'''
+'''Esta prueba verifica el correcto funcionamiento de un programa básico más la llamada a subprogramas 
+y la declaración de subprogramas anidados. Hay ejemplos de llamadas a subprogramas y variables de ambitos superiores'''
 let a,b, c : integer; d,e: float in {
 ''' esto es un '
  comentario multilinea '''
@@ -10,7 +11,7 @@ let a,b, c : integer; d,e: float in {
 			let aux, vueltas: integer in {	
 				def sumar3 (x,y : integer; resul: & integer):
 					let aux, vueltas: integer in {	
-						sumar(x + y + a, y - x - b, aux); #ambito superior tanto proc como variable
+						sumar(x + y + a, y - x - b, aux); #ambito superior tanto para el proc como para variables
 					 }
 				aux = y;
 			 }
@@ -38,7 +39,7 @@ let a,b, c : integer; d,e: float in {
    e = 0.1e-1/a;
    ''' sumar(a,b,c); esto solo para aquellos que 
                    traten llamadas a procedimientos '''
-   sumar(a+8,b*b,c);
+   sumar(a+8,b*b,c); #procedimiento llamado
    c = c*(c*a)+b;
    println(c*c);
 } # fin del main

@@ -48,12 +48,12 @@ let a,b, c : integer; d,e: float in {
    read(a); read(b);
    d = 1.0/b;
    e = 0.1e-1/a;
-   sumar(a,b,c+1);
-   sumar(a,1.2+b,c+1);
-   sumar(a,b,c,a);
-   sumar();
-   sumar2();
-   sumar2(a);
+   sumar(a,b,c+1); #requiere variable
+   sumar(a,1.2+b,c+1); #requiere variable y type missmatch
+   sumar(a,b,c,a); #num params erroneo, params de sobra
+   sumar(); #num params erroneo, params en falta
+   sumar2(); #todo OK
+   sumar2(a); #num params erroneo, params de sobra
    c = c*(c*a)+b;
    println(c*c);
 } # fin del main

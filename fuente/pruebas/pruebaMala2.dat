@@ -1,12 +1,12 @@
 ''' dos lets asociados al mismo programa '''
 def main ( ):
 
-let a,b, c : integer; d,e: float in {
+let a,b, c : integer; d,e: float in { #let 1
 ''' esto es un '
  comentario multilinea '''
 
 	#def sumar (x,y : integer; resul: & integer):
-	let aux, vueltas: integer in {	
+	let aux, vueltas: integer in {	#let 2
 		aux = y;
 	   	resul = x;
 	   	if resul < 1000: {

@@ -1,5 +1,6 @@
 def main ( ):
-'''Esta prueba testea los errores semánticos posibles que no tengan que ver con llamadas a subprogramas. Estos errores están brevemente explicados en comentarios'''
+'''Esta prueba testea los errores semánticos posibles que NO tengan que ver con llamadas a subprogramas. 
+Estos errores están brevemente explicados en comentarios'''
 let a,b, c : integer; d,e: float in {
 ''' esto es un '
  comentario multilinea '''

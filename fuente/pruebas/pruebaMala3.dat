@@ -1,12 +1,12 @@
 #Script con dos programas main
 
-def main ( ):
+def main ( ): #main 1
 
 let a,b, c : integer; d,e: float in {
 ''' esto es un '
  comentario multilinea '''
 
-	def main ( ):
+	def main ( ): #main 2
 	let aux, vueltas: integer in {	
 		aux = y;
 	   	resul = x;
